@@ -1,2 +1,2 @@
 # Nand-2-Tetris
-Files containing the solutions for the exercises of the two Nand 2 Tetris courses (parts 1 and 2)
+Files containing my solutions for the exercises of the Nand 2 Tetris course. It's a great introduction to understand how computers actually work, since you begin from elementary gates and build up to a fully functional computer.
