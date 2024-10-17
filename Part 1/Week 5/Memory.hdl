@@ -35,8 +35,15 @@ CHIP Memory {
     // Screen
     Screen(in=in, load=loadS, address=address[0..12], out=outS);
 
-    // Keyboard
-    Keyboard(out=outK);
+    // Keyboard - Notice that here I'm assuring that the keyboard will be outputed ONLY if the correct address is selected
+    Or8Way(in=address[0..7], out=outOr1);
+    Or(a=outOr1, b=address[8], out=outOr2);
+    Or(a=outOr2, b=address[9], out=outOr3);
+    Or(a=outOr3, b=address[10], out=outOr4);
+    Or(a=outOr4, b=address[11], out=outOr5);
+    Or(a=outOr5, b=address[12], out=outOr6);
+    Keyboard(out=outK1);
+    Mux16(a=outK1, b=false, sel=outOr6, out=outK);
 
     // Selecting the correct output
     Mux4Way16(a=outR, b=outR, c=outS, d=outK, sel=address[13..14], out=out);
